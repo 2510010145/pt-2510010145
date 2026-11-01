@@ -1,23 +1,15 @@
 # P06 Perulangan Lanjutan: Bersarang, break, continue, Debugger, iomanip
 
-Folder kode Pertemuan 6 Pemrograman Terstruktur. Setiap program berpasangan dengan flowchart di modul;
-pada perulangan bersarang ada dua panah yang kembali, dan pada break/continue ada panah yang
-"memotong jalan".
+Folder kode Pertemuan 6 Pemrograman Terstruktur. Setiap program berpasangan dengan flowchart di modul; pada perulangan bersarang ada dua panah yang kembali, dan pada break/continue ada panah yang "memotong jalan".
 
 ## Isi
 
 | Berkas | Kegunaan |
 |---|---|
-| `bersarang_tabel.cpp` | for di dalam for: tabel perkalian dengan kolom lurus (setw) |
-| `break_tebak.cpp` | break: berhenti lebih awal begitu tebakan benar, paling banyak 5 kesempatan |
-| `continue_remediasi.cpp` | continue: lewati mahasiswa yang nilainya cukup, daftar hanya yang perlu remediasi |
-| `rapi_iomanip.cpp` | fixed, setprecision, setw, left, right: keluaran berkolom rapi |
-| `debug_rerata.cpp` | Program dengan kesalahan logika yang sengaja ditanam; dicari dengan debugger, bukan dibaca |
-| `masukan_debug.txt` | Masukan untuk `debug_rerata`: 3 nilai (80, 70, 90), rata-rata yang benar 80 |
-| `sinilai_v05_awal.cpp` | Starter SiNilai v0.5: v0.4 lengkap, lengkapi iomanip, penghitung huruf, tertinggi, sebaran batang |
-| `contoh_masukan.txt` | Enam mahasiswa untuk menguji v0.5 |
-| `.vscode/launch.json` | Konfigurasi debugger VS Code (gdb MSYS2); tekan F5 pada berkas .cpp yang terbuka |
-| `.vscode/settings.json`, `tasks.json`, `.gitignore` | Sama dengan pertemuan sebelumnya |
+| `sinilai_v05.cpp` | Program utama SiNilai v0.5 untuk tugas P06 |
+| `contoh_masukan.txt` | Data masukan untuk menguji program sesuai modul |
+| `README.md` | Informasi tugas dan deklarasi penggunaan AI |
+| `latihan_mandiri/` | Program dan catatan Latihan Mandiri P06 |
 
 ## Kasus uji SiNilai v0.5 (`./sinilai_v05 < contoh_masukan.txt`)
 
@@ -33,15 +25,11 @@ pada perulangan bersarang ada dua panah yang kembali, dan pada break/continue ad
 Laporan kelas: 6 mahasiswa, 4 lulus, 2 belum lulus, rata-rata 64.66, tertinggi Dewi Lestari (90.00).
 Sebaran huruf: A 2, B 1, C 1, D 1, E 1 (B+ dihitung sebagai B, C+ sebagai C).
 
-> [!NOTE]
-> 83.975 tampil sebagai 83.97, bukan 83.98, karena di dalam komputer 83.975 tersimpan
-> sebagai 83.97499...; pembulatan mengikuti angka yang tersimpan.
+Catatan: 83.975 tampil sebagai 83.97, bukan 83.98, karena di dalam komputer 83.975 tersimpan sebagai 83.97499...; pembulatan mengikuti angka yang tersimpan.
 
 ## Debugger
 
-`launch.json` memakai `C:/msys64/ucrt64/bin/gdb.exe` dan program `<nama>.exe` hasil tasks.json.
-Di Linux hapus akhiran `.exe` dan ganti `miDebuggerPath` menjadi `/usr/bin/gdb`; di macOS ganti
-`MIMode` menjadi `lldb` dan hapus `miDebuggerPath`. Panduan lengkap: `03_Modul/Panduan_Debugger_VS_Code.docx`.
+`launch.json` memakai `C:/msys64/ucrt64/bin/gdb.exe` dan program `<nama>.exe` hasil tasks.json. Di Linux hapus akhiran `.exe` dan ganti `miDebuggerPath` menjadi `/usr/bin/gdb`; di macOS ganti `MIMode` menjadi `lldb` dan hapus `miDebuggerPath`. Panduan lengkap: `03_Modul/Panduan_Debugger_VS_Code.docx`.
 
 ## Yang dikumpulkan mahasiswa
 
@@ -49,11 +37,24 @@ Folder `p06` di repository `pt-NPM` berisi `sinilai_v05.cpp`. Lihat Modul Pertem
 
 ## Deklarasi AI
 
-Menggunakan **Antigravity (Claude Sonnet 4.6)** untuk:
+### Alat AI yang digunakan
 
-1. Menghapus blok kartu nilai lama (6 baris `cout`) yang seharusnya sudah digantikan oleh baris berkolom TODO 4.
-2. Menambahkan tanda kurung `()` pada ekspresi `jumlah_mahasiswa - jumlah_lulus` di baris cetak "Belum lulus" agar tidak salah karena prioritas operator `<<`.
-3. Membantu compile (`g++`) dan menjalankan program dengan redirect input (`< contoh_masukan.txt`) untuk verifikasi keluaran.
+Gemini Advanced (Google AI).
 
-Semua TODO (1–9) diisi sendiri oleh mahasiswa.
+### Untuk apa AI digunakan
 
+AI digunakan sebagai asisten kolaborasi belajar untuk:
+- memahami konsep perulangan bersarang (*nested loop*), kendali `break` dan `continue`, serta pemformatan keluaran menggunakan `<iomanip>`;
+- memberikan arahan dan contoh penyelesaian bagian TODO pada program SiNilai v0.5;
+- membantu memandu logika pembuatan penghitung huruf mutu, pencarian nilai tertinggi, dan diagram batang sebaran nilai;
+- membantu menelusuri penanganan *input buffer* (`cin.ignore`) serta memverifikasi hasil *build* dan pengujian program.
+
+### Prompt yang digunakan
+
+Prompt yang diajukan berupa diskusi interaktif seputar sintaks C++, cara mengatasi kendala *input buffer*, penyelesaian TODO modul P06, serta penyesuaian struktur dokumentasi kode.
+
+### Cara memeriksa hasil AI
+
+Saya menyusun dan mengompilasi program menggunakan `g++` dengan bendera `-std=c++20 -Wall -Wextra -Wpedantic -g` untuk memastikan tidak ada kesalahan maupun peringatan (*warning*). Selanjutnya, saya menjalankan program dengan masukan `contoh_masukan.txt` dan memvalidasi kesesuaian keluarannya dengan tabel kasus uji serta laporan kelas pada modul.
+
+Hasil verifikasi menunjukkan jumlah mahasiswa sebanyak 6 orang, 4 lulus, 2 belum lulus, rata-rata kelas 64.66, mahasiswa dengan nilai tertinggi Dewi Lestari (90.00), serta sebaran huruf mutu yang akurat (A: 2, B: 1, C: 1, D: 1, E: 1).
