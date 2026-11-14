@@ -58,3 +58,4 @@ Prompt yang diajukan berupa diskusi interaktif seputar sintaks C++, cara mengata
 Saya menyusun dan mengompilasi program menggunakan `g++` dengan bendera `-std=c++20 -Wall -Wextra -Wpedantic -g` untuk memastikan tidak ada kesalahan maupun peringatan (*warning*). Selanjutnya, saya menjalankan program dengan masukan `contoh_masukan.txt` dan memvalidasi kesesuaian keluarannya dengan tabel kasus uji serta laporan kelas pada modul.
 
 Hasil verifikasi menunjukkan jumlah mahasiswa sebanyak 6 orang, 4 lulus, 2 belum lulus, rata-rata kelas 64.66, mahasiswa dengan nilai tertinggi Dewi Lestari (90.00), serta sebaran huruf mutu yang akurat (A: 2, B: 1, C: 1, D: 1, E: 1).
+
